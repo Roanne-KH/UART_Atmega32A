@@ -16,43 +16,42 @@
 #define Button 0
 #define LED    1
 
+char str1[] = "\t LED is ON\t\r";
+char str2[] = "\t LED is OFF\t\r";
 
 
+ISR(USART_RXC_vect)
+{  char RX=UDR;
+// Using uARTvirtual terminat as transmitter and atmega as  receiver
+
+    if ( RX == 'O') {
+    PORTC |=(1<<LED);    
+    transmitString(str1);        
+                } 
 
 
+    else if ( RX == 'C') {
+     PORTC &=~(1<<LED);    
+    transmitString(str2);        
+            } 
 
 
-
-char str1[] = "LED is ON\t\r";
-char str2[] = "LED is OFF\t\r";
+   
+}
 
 
  int main(void) {
     /* Replace with your application code */
     DDRC &= ~(1 << Button); // Input button
-    DDRC |= (1 << LED);    // Input button
-    UART_init(9600); // Enable Transmitter ONLY
-    
+    DDRC |= (1 << LED);       // Output led
+    UART_init(9600);          // Enable Transmitter &and Receiver
+    sei();
   //    UDR = 'A';
     while (1) {
 
-        if (isPressed(Button)) {
-            //  2nd way : Pooling Interrupt instead of using interrupt service routine
-
-            PORTC ^= (1 << LED);
-            if (isPressed(LED)) {
-                transmitString(str1);
-                transmitValue(100);
-            } else {
-                transmitString(str2);
-                transmitValue(500);
-            }
-            
-            _delay_ms(500);
-        }
-
+       
     }
-}
+ }
 
 
 

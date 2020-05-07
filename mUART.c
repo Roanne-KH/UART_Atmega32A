@@ -8,7 +8,10 @@ void UART_init(int BaudRate) {
     UCSRB |= (1 << TXEN);          // Enable Transmitter
    // UCSRC|=(1<<USBS);           if IT IS WRITTEN THIS WAT THEN THE BIT NUMBER USB EILL BE SET IN UBRRH NOT UCSRC, URSEL=0.
     UCSRC|=(1<<URSEL)|(1<<USBS);  // IF THE URSEL=1 THEN WE CAN WRITE ON UCSRC TO CHANGE THE NUM OF STOP BITS TO 2BITS
-   
+ 
+    UCSRB |= (1 << RXEN);       //Enable Receiver
+     //UCSRB |= (1 <<UDRIE);      //EnableUDRinterrupt to indicate if  (UDR) is ready to receive new data
+     UCSRB |= (1 << RXCIE);     // Enablr RX_INTERRUPT enable when RXC flag =1 , INTERRUPT will be triggered --->means unread data still in UDR.
     // BaudRate
     int val;
     val=(F_CPU/16.0/BaudRate)-1;
