@@ -1,58 +1,63 @@
-/*
- * File:   newavr-main.c
- * Author: Roanne
- *
- * Created on May 1, 2020, 4:37 PM
- */
-
-
-
 #define F_CPU 8000000UL
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <avr/io.h>
-#include"mUART.h"
+#include "mUART.h"
+#include "mADC.h"
+#include "mTimer.h"
 #define Button 0
 #define LED    1
 
-char str1[] = "\t LED is ON\t\r";
-char str2[] = "\t LED is OFF\t\r";
+char str1[] = " LED is ON\t\r";
+char str2[] = " LED is OFF\t\r";
+char str3[] = "'C\t\r";
+char Rec = 0;
 
+ISR(USART_RXC_vect){ // This will run when RXC Flag = 1 & RXCIE=1 & Global interrupt is enabled : sei()
+char Rec = UDR;  
 
-ISR(USART_RXC_vect)
-{  char RX=UDR;
-// Using uARTvirtual terminat as transmitter and atmega as  receiver
-
-    if ( RX == 'O') {
-    PORTC |=(1<<LED);    
-    transmitString(str1);        
-                } 
-
-
-    else if ( RX == 'C') {
-     PORTC &=~(1<<LED);    
-    transmitString(str2);        
-            } 
-
-
-   
+ if (Rec == 'O') {   // OPEN LED
+     
+    PORTC |= (1 << LED);
+    
+    if (isSet(LED)) {
+        transmitString(str1);
+        transmitValue(100);
+         newline();
+    }
+    else{
+        transmitString(str2);
+        transmitValue(500);
+         newline();
+        }  
+         _delay_ms(500);
+        }
+if (Rec == 'C') {   // CLOSE LED
+     
+    PORTC ^= (1 << LED);
+    
+    if (isSet(LED)) {
+        transmitString(str1);
+        transmitValue(100);
+         newline();
+          }
+    else{
+        transmitString(str2);
+        transmitValue(500);
+        newline();
+        }  
+    _delay_ms(500);
+        }
 }
+int main(void) {
+     /* Replace with your application code */
+    DDRC |= (1 << LED); // (LED pin)is set as Output
+    UART_init(9600);    // Enable Transmitter ONLY
 
-
- int main(void) {
-    /* Replace with your application code */
-    DDRC &= ~(1 << Button); // Input button
-    DDRC |= (1 << LED);       // Output led
-    UART_init(9600);          // Enable Transmitter &and Receiver
-    sei();
-  //    UDR = 'A';
+    sei();              // Enable global interrupt
+    
     while (1) {
 
-       
-    }
- }
-
-
-
+    }    }
 

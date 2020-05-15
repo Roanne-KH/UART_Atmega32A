@@ -28,23 +28,46 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef mUART_H
-#define	mUART_H
+#ifndef M_Timer_H
+#define	M_Timer_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-void UART_init(int BaudRate);
-
-int isPressed(int pinNum);
-int isSet(int pinNum);
-void transmitChar(char data);
-void transmitString(char *data);
-void transmitValue(int val) ;
-void newline();
 
 
+// Timer Modes
+#define NormalMode      0
+#define PWM             8
+#define CTC             1
+#define FPWM            9
 
 
+#define OC0_DIS         0
+
+// Normal_CTC
+#define OC0_Toggle      1
+#define OC0_Clear       2
+#define OC0_Set         3
+
+// FPWM OUT Compare Modes
+#define OC0_FPWM_NonInvert       2
+#define OC0_FPWM_Invert          3
+
+// PWM OUT Compare Modes
+#define OC0_PWM_ClearUP          2
+#define OC0_PWM_ClearDN          3
+
+// Clock Sources
+#define CLK_io          1
+#define CLK_io_PS8      2
+#define CLK_io_PS64     3
+#define CLK_io_PS256    4
+#define CLK_io_PS1024   5
+#define EXT_CLK_R       7
+#define EXT_CLK_F       6
+
+
+void Timer0_init(char TimerMode, char CompOUTMode, char Clk_S);
 // TODO Insert appropriate #include <>
 
 // TODO Insert C++ class definitions if appropriate
@@ -56,20 +79,14 @@ void newline();
     <p><b>Function prototype:</b></p>
   
     <p><b>Summary:</b></p>
-
     <p><b>Description:</b></p>
-
     <p><b>Precondition:</b></p>
-
     <p><b>Parameters:</b></p>
-
     <p><b>Returns:</b></p>
-
     <p><b>Example:</b></p>
     <code>
  
     </code>
-
     <p><b>Remarks:</b></p>
  */
 // TODO Insert declarations or function prototypes (right here) to leverage 
@@ -87,4 +104,3 @@ extern "C" {
 #endif /* __cplusplus */
 
 #endif	/* XC_HEADER_TEMPLATE_H */
-
