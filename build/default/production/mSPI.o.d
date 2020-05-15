@@ -1,6 +1,6 @@
-build/default/production/newavr-main.o.d \
- build/default/production/newavr-main.o: newavr-main.c \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\interrupt.h \
+build/default/production/mSPI.o.d build/default/production/mSPI.o: mSPI.c \
+ c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\xc.h \
+ c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\cci.h \
  c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\io.h \
  c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\inttypes.h \
@@ -12,17 +12,11 @@ build/default/production/newavr-main.o.d \
  c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\version.h \
  c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\lock.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\util\delay.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\math.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\stdlib.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\stddef.h \
- mUART.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\xc.h \
- c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\cci.h \
- mADC.h mTimer.h mSPI.h
+ mSPI.h
 
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\interrupt.h:
+c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\xc.h:
+
+c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\cci.h:
 
 c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\io.h:
 
@@ -45,25 +39,5 @@ c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\version.h:
 c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\avr\lock.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\util\delay.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\util\delay_basic.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\math.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\avr\include\stdlib.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\stddef.h:
-
-mUART.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\xc.h:
-
-c:\program\ files\ (x86)\microchip\xc8\v2.10\avr\lib\gcc\avr\5.4.0\include\cci.h:
-
-mADC.h:
-
-mTimer.h:
 
 mSPI.h:
